@@ -111,7 +111,7 @@ useHead({
 .hero {
   position: relative;
   height: 50vh;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/soligorsk/photo_2026-07-11_13-46-23.jpg') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/soligorsk/photo_2026-07-11_13-46-23.webp') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
