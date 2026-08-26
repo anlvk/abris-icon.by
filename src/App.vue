@@ -1,11 +1,39 @@
 <script setup>
 import { ref } from 'vue'
+import { useHead } from '@unhead/vue'
 
 // 1. ИМПОРТИРУЕМ ИЗОБРАЖЕНИЕ: Сборщик Vite сам подставит правильный путь при сборке проекта
 import bgLogo from './assets/abris-logo.jpg'
-import logoImg from './assets/abris-logo.jpg' 
+import logoImg from './assets/abris-logo.jpg'
 
 const companyName = ref('Абрис')
+
+// Структурированные данные (JSON-LD) — одинаковые на всех страницах, помогают
+// поисковикам понять, что это за организация (без физического адреса — его нет в открытых данных)
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Иконописная мастерская «Абрис»',
+        alternateName: 'абрис Ikon',
+        description: 'Написание канонических икон и художественная роспись храмов.',
+        url: 'https://abris-icon.by/',
+        telephone: '+375447286426',
+        image: 'https://abris-icon.by/og-image.jpg',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Беларусь',
+        },
+        sameAs: [
+          'https://www.instagram.com/abris_icon',
+        ],
+      },
+    },
+  ],
+})
 </script>
 
 <template>
@@ -84,7 +112,7 @@ const companyName = ref('Абрис')
 .hero {
   position: relative;
   height: 50vh;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://unsplash.com') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/hero.png') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;

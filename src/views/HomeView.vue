@@ -1,7 +1,24 @@
 <script setup>
 import { ref, computed } from 'vue'
+import { useHead } from '@unhead/vue'
 
-const sectionTitle = ref('Наша продукция и услуги')
+useHead({
+  title: 'Иконописная мастерская «Абрис» | Роспись храмов и иконы на заказ в Беларуси',
+  meta: [
+    {
+      name: 'description',
+      content: 'Иконописная мастерская «Абрис» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.',
+    },
+    { property: 'og:title', content: 'Иконописная мастерская «Абрис» | Роспись храмов и иконы на заказ в Беларуси' },
+    { property: 'og:description', content: 'Иконописная мастерская «Абрис» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.' },
+    { property: 'og:url', content: 'https://abris-icon.by/' },
+    { name: 'twitter:title', content: 'Иконописная мастерская «Абрис» | Роспись храмов и иконы на заказ в Беларуси' },
+    { name: 'twitter:description', content: 'Иконописная мастерская «Абрис» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.' },
+  ],
+  link: [{ rel: 'canonical', href: 'https://abris-icon.by/' }],
+})
+
+const sectionTitle = ref('Иконописная мастерская «Абрис» — роспись храмов и иконы на заказ')
 const currentTabId = ref('church-painting') 
 
 // Состояние для модального окна (хранит URL текущей увеличенной картинки)
@@ -19,30 +36,33 @@ const closeLightbox = () => {
     document.body.style.overflow = ''
 }
 
-// Функция-помощник для превращения объекта импорта в SEO-массив
-const formatImagesForSEO = (imagesObject) => 
-  Object.entries(imagesObject).map(([path, url]) => {
+// Функция-помощник для превращения объекта импорта в SEO-массив.
+// Имена файлов вида "photo_2026-07-11_13-46-02" ничего не говорят поисковику,
+// поэтому для них используется описательный alt на основе labelPrefix + номер.
+const formatImagesForSEO = (imagesObject, labelPrefix) =>
+  Object.entries(imagesObject).map(([path, url], index) => {
     const fileName = path.split('/').pop().replace(/\.[^/.]+$/, '');
-    const formattedAlt = fileName
-      .replace(/[-_]/g, ' ')
-      .replace(/^\w/, (c) => c.toUpperCase());
+    const looksGeneric = /^(photo|img|image|dsc)[-_]/i.test(fileName);
+    const formattedAlt = looksGeneric
+      ? `${labelPrefix} — фото ${index + 1}`
+      : fileName.replace(/[-_]/g, ' ').replace(/^\w/, (c) => c.toUpperCase());
 
     return { url, alt: formattedAlt };
   });
 
 // 1. Импорт и создание списка для Soligorsk
 const soligorskImagesObject = import.meta.glob(
-  '../assets/soligorsk/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', 
+  '../assets/soligorsk/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}',
   { eager: true, import: 'default' }
 );
-const soligorskImagesList = formatImagesForSEO(soligorskImagesObject);
+const soligorskImagesList = formatImagesForSEO(soligorskImagesObject, 'Роспись храма в Солигорске')
 
 // 2. Импорт и создание списка для Icons
 const iconsObject = import.meta.glob(
-  '../assets/icons/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}', 
+  '../assets/icons/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}',
   { eager: true, import: 'default' }
 );
-const iconsList = formatImagesForSEO(iconsObject);
+const iconsList = formatImagesForSEO(iconsObject, 'Икона ручной работы мастерской «Абрис»')
 
 
 const productsList = ref([
@@ -71,7 +91,7 @@ const activeProduct = computed(() => {
 
 <template>
     <section class="services-section">
-    <h2>{{ sectionTitle }}</h2>
+    <h1>{{ sectionTitle }}</h1>
     <p class="services-sub">Мастерская находится в Беларуси</p>
 
     <div class="services-container">
@@ -92,12 +112,14 @@ const activeProduct = computed(() => {
             <!-- ГАЛЕРЕЯ -->
             <div class="tab-gallery" v-if="activeProduct.images.length > 0">
                 <!-- ИСПРАВЛЕНО: берём img.url для пути и img.alt для описания. В метод openLightbox передаем именно строку url -->
-                <img 
-                    v-for="(img, index) in activeProduct.images" 
-                    :key="index" 
-                    :src="img.url" 
-                    :alt="img.alt" 
+                <img
+                    v-for="(img, index) in activeProduct.images"
+                    :key="index"
+                    :src="img.url"
+                    :alt="img.alt"
                     class="gallery-image"
+                    loading="lazy"
+                    decoding="async"
                     @click="openLightbox(img.url)"
                 >
             </div>
@@ -132,7 +154,7 @@ const activeProduct = computed(() => {
     padding: 0 5%;
     text-align: center;
 }
-.services-section h2 {
+.services-section h1 {
     font-size: 2.2rem;
     margin-bottom: 10px;
     font-weight: 400;

@@ -1,6 +1,23 @@
 <script setup>
+import { useHead } from '@unhead/vue'
 // Перенесите импорт сюда, чтобы about.vue знал об этой картинке
 import studioFounder from '../assets/studio-founder.jpg'
+
+useHead({
+  title: 'О мастерской «Абрис» | Иконопись и роспись храмов в Беларуси',
+  meta: [
+    {
+      name: 'description',
+      content: 'История и опыт иконописной мастерской «Абрис»: роспись храмов в Беларуси, России, Сербии и Испании. Художественный руководитель — Дмитрий Левчук.',
+    },
+    { property: 'og:title', content: 'О мастерской «Абрис» | Иконопись и роспись храмов в Беларуси' },
+    { property: 'og:description', content: 'История и опыт иконописной мастерской «Абрис»: роспись храмов в Беларуси, России, Сербии и Испании. Художественный руководитель — Дмитрий Левчук.' },
+    { property: 'og:url', content: 'https://abris-icon.by/about' },
+    { name: 'twitter:title', content: 'О мастерской «Абрис» | Иконопись и роспись храмов в Беларуси' },
+    { name: 'twitter:description', content: 'История и опыт иконописной мастерской «Абрис»: роспись храмов в Беларуси, России, Сербии и Испании. Художественный руководитель — Дмитрий Левчук.' },
+  ],
+  link: [{ rel: 'canonical', href: 'https://abris-icon.by/about' }],
+})
 </script>
 
 <template>
@@ -8,7 +25,7 @@ import studioFounder from '../assets/studio-founder.jpg'
     <div class="about-grid">
       <div class="about-text-block">
         <!-- <span class="subtitle">• НАШИ ЦЕННОСТИ</span> -->
-        <h2>О нас</h2>
+        <h1>О мастерской «Абрис»</h1>
         
         <div class="about">
             <p>Мастерская абрис Ikon это мастерская  написания икон, проектирования и росписи храмов, преподавание и проведение мастер-классов. Я её создатель и руководитель Дмитрий Олегович Левчук. 
@@ -39,7 +56,7 @@ import studioFounder from '../assets/studio-founder.jpg'
 
         </div>
       <div class="about-image-block">
-        <img :src="studioFounder" alt="Основатель студии">
+        <img :src="studioFounder" alt="Дмитрий Левчук — художественный руководитель иконописной мастерской «Абрис»" loading="lazy" decoding="async">
       </div>
     </div>
 
@@ -78,7 +95,7 @@ import studioFounder from '../assets/studio-founder.jpg'
   letter-spacing: 2px;
   color: #888;
 }
-.about-text-block h2 {
+.about-text-block h1 {
   font-size: 2.2rem;
   margin: 15px 0 25px;
   font-weight: 400;

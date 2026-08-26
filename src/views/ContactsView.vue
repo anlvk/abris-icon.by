@@ -3,7 +3,7 @@
     <div class="contacts-grid">
       <!-- Левый блок: Контакты и форма -->
       <div class="contacts-text-block">
-        <h2>Контакты</h2>
+        <h1>Контакты мастерской «Абрис»</h1>
         
         <div class="contacts-info">
           <p><strong>Руководитель:</strong> Дмитрий Олегович Левчук</p>
@@ -53,6 +53,23 @@
 
 <script setup>
 import { ref } from 'vue'
+import { useHead } from '@unhead/vue'
+
+useHead({
+  title: 'Контакты | Иконописная мастерская «Абрис» в Беларуси',
+  meta: [
+    {
+      name: 'description',
+      content: 'Свяжитесь с иконописной мастерской «Абрис»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.',
+    },
+    { property: 'og:title', content: 'Контакты | Иконописная мастерская «Абрис» в Беларуси' },
+    { property: 'og:description', content: 'Свяжитесь с иконописной мастерской «Абрис»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.' },
+    { property: 'og:url', content: 'https://abris-icon.by/contacts' },
+    { name: 'twitter:title', content: 'Контакты | Иконописная мастерская «Абрис» в Беларуси' },
+    { name: 'twitter:description', content: 'Свяжитесь с иконописной мастерской «Абрис»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.' },
+  ],
+  link: [{ rel: 'canonical', href: 'https://abris-icon.by/contacts' }],
+})
 
 const form = ref({
   name: '',
@@ -84,7 +101,7 @@ const handleSubmit = () => {
 }
 
 /* Стилизация заголовка в вашем фирменном стиле */
-.contacts-text-block h2 {
+.contacts-text-block h1 {
   font-size: 2.2rem;
   margin: 15px 0 25px;
   font-weight: 400;
