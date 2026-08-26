@@ -3,11 +3,11 @@
     <div class="contacts-grid">
       <!-- Левый блок: Контакты и форма -->
       <div class="contacts-text-block">
-        <h1>Контакты мастерской «Абрис»</h1>
+        <h1>Контакты мастерской «Abris - icon»</h1>
         
         <div class="contacts-info">
           <p><strong>Руководитель:</strong> Дмитрий Олегович Левчук</p>
-          <p><strong>Мастерская:</strong> абрис Ikon (иконопись, роспись и проектирование храмов)</p>
+          <p><strong>Мастерская:</strong> Abris - icon (иконопись, роспись и проектирование храмов)</p>
           <p><strong>Телефон / Telegram:</strong> +375447286426</p>
           <p><strong>Instagram:</strong> <a href="https://www.instagram.com/abris_icon">abris_icon</a></p>
         </div>
@@ -56,17 +56,17 @@ import { ref } from 'vue'
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Контакты | Иконописная мастерская «Абрис» в Беларуси',
+  title: 'Контакты | Иконописная мастерская «Abris - icon» в Беларуси',
   meta: [
     {
       name: 'description',
-      content: 'Свяжитесь с иконописной мастерской «Абрис»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.',
+      content: 'Свяжитесь с иконописной мастерской «Abris - icon»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.',
     },
-    { property: 'og:title', content: 'Контакты | Иконописная мастерская «Абрис» в Беларуси' },
-    { property: 'og:description', content: 'Свяжитесь с иконописной мастерской «Абрис»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.' },
+    { property: 'og:title', content: 'Контакты | Иконописная мастерская «Abris - icon» в Беларуси' },
+    { property: 'og:description', content: 'Свяжитесь с иконописной мастерской «Abris - icon»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.' },
     { property: 'og:url', content: 'https://abris-icon.by/contacts' },
-    { name: 'twitter:title', content: 'Контакты | Иконописная мастерская «Абрис» в Беларуси' },
-    { name: 'twitter:description', content: 'Свяжитесь с иконописной мастерской «Абрис»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.' },
+    { name: 'twitter:title', content: 'Контакты | Иконописная мастерская «Abris - icon» в Беларуси' },
+    { name: 'twitter:description', content: 'Свяжитесь с иконописной мастерской «Abris - icon»: телефон, Telegram и Instagram. Расчёт стоимости росписи храма или заказа иконы за 2-3 дня.' },
   ],
   link: [{ rel: 'canonical', href: 'https://abris-icon.by/contacts' }],
 })

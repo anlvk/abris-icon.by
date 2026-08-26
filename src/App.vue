@@ -6,7 +6,7 @@ import { useHead } from '@unhead/vue'
 import bgLogo from './assets/abris-logo.jpg'
 import logoImg from './assets/abris-logo.jpg'
 
-const companyName = ref('Абрис')
+const companyName = ref('Abris - icon')
 
 // Структурированные данные (JSON-LD) — одинаковые на всех страницах, помогают
 // поисковикам понять, что это за организация (без физического адреса — его нет в открытых данных)
@@ -17,8 +17,7 @@ useHead({
       innerHTML: {
         '@context': 'https://schema.org',
         '@type': 'LocalBusiness',
-        name: 'Иконописная мастерская «Абрис»',
-        alternateName: 'абрис Ikon',
+        name: 'Иконописная мастерская «Abris - icon»',
         description: 'Написание канонических икон и художественная роспись храмов.',
         url: 'https://abris-icon.by/',
         telephone: '+375447286426',
@@ -52,7 +51,7 @@ useHead({
     <section class="hero">
       <!-- <h1>{{ companyName }}</h1> -->
       <div class="logo-wrapper">
-        <img :src="logoImg" alt="Логотип АБРИС" class="hero-logo">
+        <img :src="logoImg" alt="Логотип Abris - icon" class="hero-logo">
       </div>
       <p>Изготовление икон и роспись храмов</p>
     </section>

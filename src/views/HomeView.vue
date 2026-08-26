@@ -3,22 +3,22 @@ import { ref, computed } from 'vue'
 import { useHead } from '@unhead/vue'
 
 useHead({
-  title: 'Иконописная мастерская «Абрис» | Роспись храмов и иконы на заказ в Беларуси',
+  title: 'Иконописная мастерская «Abris - icon» | Роспись храмов и иконы на заказ в Беларуси',
   meta: [
     {
       name: 'description',
-      content: 'Иконописная мастерская «Абрис» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.',
+      content: 'Иконописная мастерская «Abris - icon» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.',
     },
-    { property: 'og:title', content: 'Иконописная мастерская «Абрис» | Роспись храмов и иконы на заказ в Беларуси' },
-    { property: 'og:description', content: 'Иконописная мастерская «Абрис» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.' },
+    { property: 'og:title', content: 'Иконописная мастерская «Abris - icon» | Роспись храмов и иконы на заказ в Беларуси' },
+    { property: 'og:description', content: 'Иконописная мастерская «Abris - icon» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.' },
     { property: 'og:url', content: 'https://abris-icon.by/' },
-    { name: 'twitter:title', content: 'Иконописная мастерская «Абрис» | Роспись храмов и иконы на заказ в Беларуси' },
-    { name: 'twitter:description', content: 'Иконописная мастерская «Абрис» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.' },
+    { name: 'twitter:title', content: 'Иконописная мастерская «Abris - icon» | Роспись храмов и иконы на заказ в Беларуси' },
+    { name: 'twitter:description', content: 'Иконописная мастерская «Abris - icon» предлагает услуги по написанию канонических икон и художественной росписи храмов в Беларуси, России и странах СНГ.' },
   ],
   link: [{ rel: 'canonical', href: 'https://abris-icon.by/' }],
 })
 
-const sectionTitle = ref('Иконописная мастерская «Абрис» — роспись храмов и иконы на заказ')
+const sectionTitle = ref('Иконописная мастерская «Abris - icon» — роспись храмов и иконы на заказ')
 const currentTabId = ref('church-painting') 
 
 // Состояние для модального окна (хранит URL текущей увеличенной картинки)
@@ -62,7 +62,7 @@ const iconsObject = import.meta.glob(
   '../assets/icons/*.{png,jpg,jpeg,webp,svg,PNG,JPG,JPEG,WEBP,SVG}',
   { eager: true, import: 'default' }
 );
-const iconsList = formatImagesForSEO(iconsObject, 'Икона ручной работы мастерской «Абрис»')
+const iconsList = formatImagesForSEO(iconsObject, 'Икона ручной работы мастерской «Abris - icon»')
 
 
 const productsList = ref([
