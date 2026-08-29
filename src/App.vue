@@ -66,13 +66,22 @@ useHead({
 <style scoped>
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding: 20px 5%;
   position: absolute;
   width: 100%;
+  box-sizing: border-box;
   z-index: 10;
   background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-links a {
@@ -82,6 +91,7 @@ useHead({
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
   cursor: pointer;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
@@ -136,6 +146,30 @@ useHead({
 
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 5%;
+    gap: 10px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .nav-links a {
+    margin: 0 8px 6px;
+    font-size: 0.8rem;
+  }
+
+  .btn-book {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
 }
 
 .hero-logo {
