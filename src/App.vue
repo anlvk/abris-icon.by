@@ -1,11 +1,38 @@
 <script setup>
 import { ref } from 'vue'
+import { useHead } from '@unhead/vue'
 
 // 1. ИМПОРТИРУЕМ ИЗОБРАЖЕНИЕ: Сборщик Vite сам подставит правильный путь при сборке проекта
 import bgLogo from './assets/abris-logo.jpg'
-import logoImg from './assets/abris-logo.jpg' 
+import logoImg from './assets/abris-logo.jpg'
 
-const companyName = ref('Абрис')
+const companyName = ref('Abris - icon')
+
+// Структурированные данные (JSON-LD) — одинаковые на всех страницах, помогают
+// поисковикам понять, что это за организация (без физического адреса — его нет в открытых данных)
+useHead({
+  script: [
+    {
+      type: 'application/ld+json',
+      innerHTML: {
+        '@context': 'https://schema.org',
+        '@type': 'LocalBusiness',
+        name: 'Иконописная мастерская «Abris - icon»',
+        description: 'Написание канонических икон и художественная роспись храмов.',
+        url: 'https://abris-icon.by/',
+        telephone: '+375447286426',
+        image: 'https://abris-icon.by/og-image.jpg',
+        areaServed: {
+          '@type': 'Country',
+          name: 'Беларусь',
+        },
+        sameAs: [
+          'https://www.instagram.com/abris_icon',
+        ],
+      },
+    },
+  ],
+})
 </script>
 
 <template>
@@ -24,7 +51,7 @@ const companyName = ref('Абрис')
     <section class="hero">
       <!-- <h1>{{ companyName }}</h1> -->
       <div class="logo-wrapper">
-        <img :src="logoImg" alt="Логотип АБРИС" class="hero-logo">
+        <img :src="logoImg" alt="Логотип Abris - icon" class="hero-logo">
       </div>
       <p>Изготовление икон и роспись храмов</p>
     </section>
@@ -39,13 +66,22 @@ const companyName = ref('Абрис')
 <style scoped>
 .header {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
+  gap: 12px;
   padding: 20px 5%;
   position: absolute;
   width: 100%;
+  box-sizing: border-box;
   z-index: 10;
   background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
+}
+
+.nav-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .nav-links a {
@@ -55,6 +91,7 @@ const companyName = ref('Абрис')
   font-size: 0.9rem;
   text-transform: uppercase;
   letter-spacing: 1px;
+  white-space: nowrap;
   cursor: pointer;
   padding-bottom: 4px;
   border-bottom: 2px solid transparent;
@@ -84,7 +121,7 @@ const companyName = ref('Абрис')
 .hero {
   position: relative;
   height: 50vh;
-  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('https://unsplash.com') no-repeat center center/cover;
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('./assets/soligorsk/photo_2026-07-11_13-46-23.webp') no-repeat center center/cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -109,6 +146,30 @@ const companyName = ref('Абрис')
 
 @media (max-width: 768px) {
   .hero h1 { font-size: 2.2rem; }
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    justify-content: center;
+    padding: 14px 5%;
+    gap: 10px;
+  }
+
+  .nav-links {
+    justify-content: center;
+  }
+
+  .nav-links a {
+    margin: 0 8px 6px;
+    font-size: 0.8rem;
+  }
+
+  .btn-book {
+    padding: 8px 16px;
+    font-size: 0.8rem;
+    white-space: nowrap;
+  }
 }
 
 .hero-logo {

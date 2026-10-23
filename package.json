@@ -9,6 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@unhead/vue": "^3.4.0",
     "vite-plugin-prerender": "^1.0.8",
     "vue": "^3.5.39",
     "vue-router": "^4.6.4"
